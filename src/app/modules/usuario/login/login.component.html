@@ -1,0 +1,25 @@
+<table>
+  <tr>
+    <td>{{ labelUsername }}</td>
+    <td>
+      <input
+        type="text"
+        value="{{ getUsername }}"
+        (input)="setUsername($event)"
+      />
+    </td>
+  </tr>
+  <tr>
+    <td>{{ labelPassword }}</td>
+    <td>
+      <input
+        type="password"
+        value="{{ getPassword }}"
+        (input)="setPassword($event)"
+      />
+    </td>
+  </tr>
+  <tr>
+    <td><input type="button" value="Login" (click)="login()" /></td>
+  </tr>
+</table>
