@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginComponent {
   private username: string = '';
   private password: string = '';
 
-  constructor(private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   get getUsername(): string {
     return this.username;
@@ -39,7 +40,7 @@ export class LoginComponent {
       `Login con username: ${this.username} y password: ${this.password}`
     );
 
-    if (this.username === 'npalma' && this.password === 'npalma') {
+    if (this.authService.verifyLogin(this.username, this.password)) {
       this.router.navigateByUrl('/dashboard');
     } else {
       alert('Datos no válidos');
